@@ -1,0 +1,32 @@
+ ________________________________________________________
+|														 |
+|------------------------Notizbuch-----------------------|
+|________________________________________________________|
+
+Hello World Test
+
+INHALTSVERZEICHNIS
+	.1 CPP
+	.2 NVIM
+
+
+
+1.	--CPP--
+	
+-Pointers können als int* var, int * var und int *var verwendet werden.
+
+
+	--Var
+	-bitset		String to byte
+
+
+2.	--NVIM--
+
+:wq				write and exit
+:! <command>	exe bash command
+:e				new file
+dd				delete and clip to memory
+k				move one line up
+j				move one line down
+P				Paste
+y				Yank (Copy)
