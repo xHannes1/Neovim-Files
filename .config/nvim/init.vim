@@ -1,11 +1,14 @@
 call plug#begin()
 Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'https://github.com/preservim/nerdtree'
+Plug 'https://github.com/rafi/awesome-vim-colorschemes'
+Plug 'https://github.com/neoclide/coc.nvim'
 call plug#end()
 
 :set number
 :set autoindent
 :set smartindent
+:set noexpandtab
 :set tabstop=4
 :set shiftwidth=4
 :set smarttab
@@ -20,8 +23,30 @@ call plug#end()
 :set signcolumn=yes
 :set ruler
 :set visualbell
-
+:set termguicolors
+:colorscheme gruvbox
 :syntax on
 
-
 nnoremap <C-f> :NERDTree<CR>
+nnoremap <C-b> :! make build && make run<CR>
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap < <><left>
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
+
+let b:coc_diagnostic_disable=1
